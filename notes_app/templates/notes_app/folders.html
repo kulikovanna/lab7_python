@@ -1,0 +1,16 @@
+{% extends "notes_app/base.html" %}
+{% block content %}
+  <ul class="main_list">
+  {% for folder in folders %}
+  <a href="{% url 'notes_app:folder' folder.id %}" class="main_color">
+    <li class="main_item">
+      {{folder.name}}
+      <time class="text-down">{{folder.data_updated}}</time>
+    </li>
+  </a>
+  {% endfor %}
+  </ul>
+
+  <a href="{% url 'notes_app:new_folder' %}" class="btn space-mono-regular">[Создать папку]</a>
+  
+{% endblock content %}

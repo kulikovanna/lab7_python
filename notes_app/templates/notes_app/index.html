@@ -1,0 +1,22 @@
+{% extends "notes_app/base.html" %}
+{% block content %}
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
+  <ul class="main_list">
+  {% for note in notes %}
+  <a href="{% url 'notes_app:note' note.id %}" class="main_color">
+    <li class="main_item">
+      {{note.title}}  
+      {% if  note.folder != None %}
+      -> {{note.folder}}
+      {% endif %}
+      <!-- {{ note.data_updated|timezone:"Europe/Moscow" }} -->
+      <time datetime="{{note.data_updated}}" class="text-down">{{note.data_updated}}</time>
+    </li>
+  </a>
+  {% endfor %}
+  </ul>
+
+  <a href="{% url 'notes_app:new_note' %}" class="btn space-mono-regular">[Создать запись]</a>
+  
+{% endblock content %}

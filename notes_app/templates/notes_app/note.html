@@ -1,0 +1,18 @@
+{% extends "notes_app/base.html" %}
+{% block content %}
+  
+<form action="{% url 'notes_app:note' note.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" name="submit">[Сохранить]</button>
+</form>
+
+  <!-- <input id="title" value="{{note.title}}" class="title main_color"></input> -->
+  <!-- <span>--------------------------------</span> -->
+  <!-- <textarea id="content" class="main_color">{{note.content}}</textarea> -->
+  <!-- <a href="{% url 'notes_app:new_note' %}" class="btn space-mono-regular">[Редактировать]</a> -->
+{% endblock content %}
+
+
+
+  

@@ -1,0 +1,21 @@
+{% extends "notes_app/base.html" %}
+{% block content %}
+<form action="{% url 'notes_app:folder' folder.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" name="submit">[Сохранить]</button>
+</form>
+
+  <ul class="main_list">
+  <span>--------------------------------</span>
+    {% for note in notes %}
+    <a href="{% url 'notes_app:note' note.id %}" class="main_color">
+      <li class="main_item">
+        {{note.title}}
+        <time class="text-down">{{note.data_updated}}</time>
+      </li>
+    </a>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}
